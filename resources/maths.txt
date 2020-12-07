@@ -1,0 +1,3 @@
+saman,90
+amali,80
+kala,57

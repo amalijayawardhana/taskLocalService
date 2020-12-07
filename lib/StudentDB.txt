@@ -1,0 +1,37 @@
+DROP DATABASE StudentDB;
+CREATE DATABASE StudentDB;
+USE StudentDB;
+
+CREATE TABLE Student(
+                        id INT AUTO_INCREMENT,
+                        name VARCHAR(50) NOT NULL,
+                        CONSTRAINT PRIMARY KEY (id)
+);
+
+CREATE TABLE Subject(
+                        id INT AUTO_INCREMENT,
+                        name VARCHAR(15) NOT NULL,
+                        CONSTRAINT PRIMARY KEY (id)
+);
+
+CREATE TABLE Student_Subject(
+                                student_id INT,
+                                subject_id INT,
+                                mark INT,
+                                CONSTRAINT foreign key (student_id) references Student(id)
+                                    ON UPDATE CASCADE ON DELETE CASCADE,
+                                CONSTRAINT foreign key (subject_id) references Subject(id)
+                                    ON UPDATE CASCADE ON DELETE CASCADE,
+                                CONSTRAINT PRIMARY KEY (student_id,subject_id)
+);
+
+/*test
+
+CREATE TABLE Student_Subject(
+                                id INT AUTO_INCREMENT,
+                                student_name VARCHAR(50),
+				subject_name VARCHAR(50),
+                                mark INT,
+                                CONSTRAINT PRIMARY KEY (id)
+);
+*/
